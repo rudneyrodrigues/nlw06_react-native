@@ -1,15 +1,28 @@
+import React from 'react';
 import {
   Image,
   Text,
   View,
 } from 'react-native';
 
+import { useNavigation, CommonActions } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
 import { ButtonIcon } from '../../components/ButtonIcon';
 import IllustrationImg from '../../assets/illustration.png';
+import { RootStackParamList } from '../../routes/auth.routes';
 
 import { styles } from './style';
 
+type homeScreenProp = StackNavigationProp<RootStackParamList>;
+
 export function SignIn() {
+  const navigation = useNavigation<homeScreenProp>();
+
+  function handleSignIn() {
+    navigation.navigate('Home');
+  }
+
   return (
     <>
       <View style={styles.container}>
@@ -35,7 +48,7 @@ export function SignIn() {
 
           <ButtonIcon
             title='Entrar com o Discord'
-            activeOpacity={0.7}
+            onPress={handleSignIn}
           />
         </View>
       </View>
