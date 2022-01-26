@@ -8,6 +8,7 @@ interface Props {
   children: React.ReactNode;
 }
 
+// Função que aplica um gradiente de cores na aplicação
 export function Background({ children }: Props) {
   const {secondary80, secondary100 } = theme.colors;
 

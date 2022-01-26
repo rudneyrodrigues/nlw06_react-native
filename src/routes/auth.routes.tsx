@@ -11,6 +11,7 @@ export type RootStackParamList = {
 
 const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 
+// Rotas de navegação entre as Screens do projeto
 export function AuthRoutes() {
   return (
     <Navigator

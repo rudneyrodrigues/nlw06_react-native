@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import { useNavigation, CommonActions } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { ButtonIcon } from '../../components/ButtonIcon';

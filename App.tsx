@@ -15,6 +15,7 @@ import { Background } from './src/components/Background';
 import { Routes } from './src/routes';
 
 export default function App() {
+  // Carregamento de fontes personalizadas dentro do App
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_500Medium,
