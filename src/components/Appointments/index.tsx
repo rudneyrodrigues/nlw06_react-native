@@ -12,7 +12,7 @@ import CalendarSvg from '../../assets/calendar.svg';
 export interface GuildProps {
   id: string,
   name: string,
-  icon: 'string' | null,
+  icon: string | null,
   owner: boolean,
 }
 
@@ -40,7 +40,7 @@ export function Appointments({ data, ...props }: Props) {
       {...props}
     >
       <View style={styles.container}>
-        <GuildIcon />
+        <GuildIcon icon={data.guild.icon} />
 
         <View style={styles.content}>
           <View style={styles.header}>

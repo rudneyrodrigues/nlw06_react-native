@@ -4,7 +4,9 @@ import {
   FlatList,
   Text
 } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
+import { Background } from '../../components/Background';
 import { Profile } from "../../components/Profile ";
 import { ButtonAdd } from "../../components/ButtonAdd";
 import { CategorySelect } from "../../components/CategorySelect";
@@ -13,104 +15,56 @@ import { Appointments } from '../../components/Appointments';
 import { ListDivider } from '../../components/ListDivider';
 
 import { styles } from "./style";
+import { appointmentsData } from '../../utils/appointments';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../routes/auth.routes';
+
+type navigationProps = StackNavigationProp<RootStackParamList>;
 
 export function Home() {
   const [category, setCategory] = useState('');
-
-  const appointments = [
-    {
-      id: '1',
-      guild: {
-        id: '1',
-        name: 'Lendários',
-        icon: null,
-        owner: true,
-      },
-      category: '1',
-      date: '28/01 às 20:40h',
-      description: 'É hoje que vamos chegar ao challenger sem perder uma partida da md10'
-    },
-    {
-      id: '2',
-      guild: {
-        id: '1',
-        name: 'Lendários',
-        icon: null,
-        owner: true,
-      },
-      category: '1',
-      date: '28/01 às 20:40h',
-      description: 'É hoje que vamos chegar ao challenger sem perder uma partida da md10'
-    },
-    {
-      id: '3',
-      guild: {
-        id: '1',
-        name: 'Lendários',
-        icon: null,
-        owner: true,
-      },
-      category: '1',
-      date: '28/01 às 20:40h',
-      description: 'É hoje que vamos chegar ao challenger sem perder uma partida da md10'
-    },
-    {
-      id: '4',
-      guild: {
-        id: '1',
-        name: 'Lendários',
-        icon: null,
-        owner: true,
-      },
-      category: '1',
-      date: '28/01 às 20:40h',
-      description: 'É hoje que vamos chegar ao challenger sem perder uma partida da md10'
-    },
-    {
-      id: '5',
-      guild: {
-        id: '1',
-        name: 'Lendários',
-        icon: null,
-        owner: true,
-      },
-      category: '1',
-      date: '28/01 às 20:40h',
-      description: 'É hoje que vamos chegar ao challenger sem perder uma partida da md10'
-    },
-  ];
+  const navigation = useNavigation<navigationProps>();
 
   function handleCategorySelect(categoryId: string) {
     categoryId === category ? setCategory('') : setCategory(categoryId);
   }
 
+  function handleAppointmentDetails() {
+    navigation.navigate('Details');
+  }
+
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Profile />
-        <ButtonAdd />
-      </View>
+    <Background>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Profile />
+          <ButtonAdd />
+        </View>
 
-      <CategorySelect
-        categorySelected={category}
-        setCategory={handleCategorySelect}
-      />
-
-      <View style={styles.content}>
-        <ListHeader title='Partidas agendadas' subtitle='Total 6' />
-
-        {/* As FlatList são indicadas quando é necessário uma grande listagem de objetos, pois possui um melhor desempenho na renderização */}
-        <FlatList
-          data={appointments}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => (
-              <Appointments data={item} />
-          )}
-          ItemSeparatorComponent={ListDivider}
-          style={styles.matches}
-          showsVerticalScrollIndicator={false}
+        <CategorySelect
+          categorySelected={category}
+          setCategory={handleCategorySelect}
         />
+
+        <View style={styles.content}>
+          <ListHeader title='Partidas agendadas' subtitle='Total de 5' />
+
+          {/* As FlatList são indicadas quando é necessário uma grande listagem de objetos, pois possui um melhor desempenho na renderização */}
+          <FlatList
+            data={appointmentsData}
+            keyExtractor={item => item.id}
+            renderItem={({item}) => (
+                <Appointments
+                  data={item}
+                  onPress={handleAppointmentDetails}
+                />
+            )}
+            ItemSeparatorComponent={ListDivider}
+            style={styles.matches}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
       </View>
-    </View>
+    </Background>
   )
 }

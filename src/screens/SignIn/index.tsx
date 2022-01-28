@@ -9,22 +9,23 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { ButtonIcon } from '../../components/ButtonIcon';
+import { Background } from '../../components/Background';
 import IllustrationImg from '../../assets/illustration.png';
 import { RootStackParamList } from '../../routes/auth.routes';
 
 import { styles } from './style';
 
-type homeScreenProp = StackNavigationProp<RootStackParamList>;
+type navigationProps = StackNavigationProp<RootStackParamList>;
 
 export function SignIn() {
-  const navigation = useNavigation<homeScreenProp>();
+  const navigation = useNavigation<navigationProps>();
 
   function handleSignIn() {
     navigation.navigate('Home');
   }
 
   return (
-    <>
+    <Background>
       <View style={styles.container}>
         <Image
           source={ IllustrationImg }
@@ -52,6 +53,6 @@ export function SignIn() {
           />
         </View>
       </View>
-    </>
+    </Background>
   )
 }
