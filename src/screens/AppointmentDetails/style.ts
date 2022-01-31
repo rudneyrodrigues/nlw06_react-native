@@ -35,12 +35,11 @@ export const styles = StyleSheet.create({
     marginTop: 27,
   },
   divider: {
-    width: '79.5%',
-    height: 1,
+    width: '100%',
     backgroundColor: theme.colors.secondary40,
-    marginTop: 10,
-    marginVertical: 20,
-    alignSelf: 'flex-end'
+    marginVertical: 10,
+    alignSelf: 'flex-end',
+    alignItems: 'center',
   },
   footer: {
     paddingHorizontal: 24,

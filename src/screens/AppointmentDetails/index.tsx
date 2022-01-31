@@ -17,7 +17,7 @@ export function AppointmentDetails() {
   const members = [
     {
       id: '1',
-      username: 'Rudney',
+      username: 'Rudney Rodrigues',
       avatar_url: 'https://github.com/rudneyrodrigues.png',
       status: 'online',
     },
@@ -26,7 +26,19 @@ export function AppointmentDetails() {
       username: 'John Doe',
       avatar_url: 'https://github.com/rudneyrodrigues.png',
       status: 'offline',
-    }
+    },
+    {
+      id: '3',
+      username: 'Glenda Priscila',
+      avatar_url: 'https://github.com/rudneyrodrigues.png',
+      status: 'online',
+    },
+    {
+      id: '4',
+      username: 'Rudney Rodrigues',
+      avatar_url: 'https://github.com/rudneyrodrigues.png',
+      status: 'offline',
+    },
   ];
 
   return (
@@ -46,7 +58,9 @@ export function AppointmentDetails() {
       >
         <View style={styles.bannerContent}>
           <Text style={styles.title}>League of Legends</Text>
-          <Text style={styles.subtitle}>É hoje que vamos chegar ao challenger sem perder uma partida da md10</Text>
+          <Text style={styles.subtitle}>
+            É hoje que vamos chegar ao challenger sem perder uma partida da md10
+          </Text>
         </View>
       </ImageBackground>
 

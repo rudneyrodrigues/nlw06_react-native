@@ -29,8 +29,12 @@ export function Home() {
     categoryId === category ? setCategory('') : setCategory(categoryId);
   }
 
+  // Navegando entre as páginas
   function handleAppointmentDetails() {
     navigation.navigate('Details');
+  }
+  function handleAppointmentCreate() {
+    navigation.navigate('Create');
   }
 
   return (
@@ -38,7 +42,7 @@ export function Home() {
       <View style={styles.container}>
         <View style={styles.header}>
           <Profile />
-          <ButtonAdd />
+          <ButtonAdd onPress={handleAppointmentCreate} />
         </View>
 
         <CategorySelect
