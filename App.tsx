@@ -36,6 +36,7 @@ export default function App() {
           backgroundColor='transparent'
           // translucent deixa a StatusBar transparente
           translucent
+          animated
         />
         <Routes />
       </Background>
